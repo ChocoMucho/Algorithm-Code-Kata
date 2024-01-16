@@ -1,19 +1,11 @@
+using System;
+using System.Diagnostics;
+
 public class Solution {
     public long solution(int a, int b) {
-        long answer = 0;
         
-        if(a > b)
-        {
-            int temp = a;
-            a = b;
-            b = temp;
-        }
+        if(a == b) return a;
         
-        for(int i = a; i<=b; ++i)
-        {
-            answer += (long)i;
-        }
-        
-        return answer;
+        return ((long)(Math.Abs(a - b)+1) * (b + a)) / 2;
     }
 }
