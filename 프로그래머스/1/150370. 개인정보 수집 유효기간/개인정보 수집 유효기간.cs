@@ -40,3 +40,14 @@ public class Solution {
         return answer.ToArray();;
     }
 }
+
+/*
+1. 오늘 날짜를 저장?
+2. terms는 딕셔너리로 저장
+
+
+3 
+- privacies의 요소의 약관 종류 인식 방법 => 끝에서 0번째
+- privacies의 날짜에 유효기간 계산해놓기
+- 계산된 privacies 날짜랑 오늘 날짜 비교해서 결과 도출
+*/
