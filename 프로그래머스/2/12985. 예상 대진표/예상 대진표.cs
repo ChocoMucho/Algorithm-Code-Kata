@@ -4,27 +4,17 @@ class Solution
 {
     public int solution(int n, int a, int b)
     {
-        int answer = 1;
-        int valueA = a;
-        int valueB = b;
+        int answer = 0;
         
-        while(true)
+        while(a != b)
         {
-            if(HalfValueRounded(valueA) == HalfValueRounded(valueB))
-                return answer;
-            
-            valueA = HalfValueRounded(valueA);
-            valueB = HalfValueRounded(valueB);
+            a = (a+1) / 2;
+            b = (b+1) / 2;
             
             ++answer;
         }
         
 
         return answer;
-    }
-    
-    public int HalfValueRounded(int number)
-    {
-        return (number + 1) / 2;
     }
 }
