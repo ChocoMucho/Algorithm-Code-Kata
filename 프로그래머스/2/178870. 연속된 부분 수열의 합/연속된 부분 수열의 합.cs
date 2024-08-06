@@ -7,7 +7,7 @@ public class Solution {
         int end = 0;
         int sum = sequence[0];
         
-        while(start < sequence.Length)
+        while(start < sequence.Length) // start 범위 체크
         {
             if(sum == k) // start 부터 end 까지의 합이 k와 같을 때
             {
@@ -17,21 +17,21 @@ public class Solution {
                     answer[1] = end;
                 }
                 
-                if(++end >= sequence.Length)
+                if(++end >= sequence.Length) // ++end 범위 체크 후 sum에 추가 (일부러 범위 늘리기)
                     break;
                 else
                     sum += sequence[end];            
             }
             else if(sum < k)
             {
-                if(++end >= sequence.Length)
+                if(++end >= sequence.Length) // ++end 범위 체크 후 sum에 추가
                     break;
                 else
                     sum += sequence[end];   
             }
             else if(sum > k)
             {
-                sum -= sequence[start++];
+                sum -= sequence[start++]; // 앞 쪽 요소 값 만큼 빼주기
             }
         }
         
