@@ -24,31 +24,27 @@ public class Solution {
         
         for(int i = k; i < enemy.Length; ++i)
         {
-            if (enemySortDic.Count == 0) // 딕셔너리 비어있음 -> 
-                n -= enemy[i];         
-            else
+            var smallest = enemySortDic.First();
+
+            //enemySortDic의 가장 작은 키(이하 "smallest.Key")
+            //smallest.Key와 enemy[i] 둘 중 누가 더 작은지
+            //smallest.Key가 enemy[i]의 미만인 경우
+            if(smallest.Key < enemy[i])
             {
-                var smallest = enemySortDic.First();
+                n -= smallest.Key;
+
+                if(!enemySortDic.ContainsKey(enemy[i]))
+                    enemySortDic[enemy[i]] = 1;
+                else
+                    ++enemySortDic[enemy[i]];
+
+                --enemySortDic[smallest.Key];
+                if(enemySortDic[smallest.Key] <= 0)
+                    enemySortDic.Remove(smallest.Key);                                       
+            }
+            else // smallest.Key가 enemy[i]이상인 경우
+                n -= enemy[i];           
             
-                //enemySortDic의 가장 작은 키(이하 "smallest.Key")
-                //smallest.Key와 enemy[i] 둘 중 누가 더 작은지
-                //smallest.Key가 enemy[i]의 미만인 경우
-                if(smallest.Key < enemy[i])
-                {
-                    n -= smallest.Key;
-
-                    if(!enemySortDic.ContainsKey(enemy[i]))
-                        enemySortDic[enemy[i]] = 1;
-                    else
-                        ++enemySortDic[enemy[i]];
-
-                    --enemySortDic[smallest.Key];
-                    if(enemySortDic[smallest.Key] <= 0)
-                        enemySortDic.Remove(smallest.Key);                                       
-                }
-                else // smallest.Key가 enemy[i]이상인 경우
-                    n -= enemy[i];           
-            } 
             if(n < 0)
                 break;
             ++answer;
