@@ -48,7 +48,7 @@ public class Solution {
             if(q1.Count <= 0||q2.Count <= 0)
                 return -1;          
             
-            if(answer >= 999999)
+            if(answer >= 999999) // 아니 이게 왜 돼..
                 return -1;
         }
         
