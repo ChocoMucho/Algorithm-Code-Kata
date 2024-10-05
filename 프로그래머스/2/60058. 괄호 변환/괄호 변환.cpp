@@ -88,7 +88,7 @@ string MakeValid(string value)
     string validString = "";
     for(int i = 0; i < length; ++i)
     {
-        validString += value[i] == '(' ? ')' : '('; 
+        validString += i < length/2 ? '(' : ')';
     }
     
     return validString;
