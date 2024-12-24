@@ -16,12 +16,10 @@ public class Solution {
         {
             if(mainQueue.Count <= 0 && subStack.Count <= 0)
                 break;
-            // 1. 메인 peek이 맞음
-            // 1-1. Dequeue하고 ++result
-            // 2. 메인 peek이 아님
-            // 2-1. 서브 peek해봄
-            // 2-2. 서브 peek 맞으면 Pop하고 ++result
-            // 2-3. 서브 peek 아니면 break;
+            
+            if(mainQueue.Count <= 0 && subStack.Peek() != order[result])
+                break;
+            
             if(mainQueue.Count > 0 &&  mainQueue.Peek() == order[result])
             {
                 mainQueue.Dequeue();
@@ -38,10 +36,7 @@ public class Solution {
                 }
                 else
                 {
-                    if(mainQueue.Count > 0)
-                        subStack.Push(mainQueue.Dequeue());
-                    else
-                        break;
+                    subStack.Push(mainQueue.Dequeue());
                 }                
             }
         }
@@ -49,3 +44,10 @@ public class Solution {
         return result;
     }
 }
+
+// 1. 메인 peek이 맞음
+// 1-1. Dequeue하고 ++result
+// 2. 메인 peek이 아님
+// 2-1. 서브 peek해봄
+// 2-2. 서브 peek 맞으면 Pop하고 ++result
+// 2-3. 서브 peek 아니면 break;
