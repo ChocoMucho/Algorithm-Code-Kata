@@ -8,7 +8,6 @@ using namespace std;
 vector<int> solution(vector<string> name, vector<int> yearning, vector<vector<string>> photo) {
     vector<int> answer;
     map<string, int> scoreMap;
-    map<string, int>::iterator iter;
     
     // 1. 이름이랑 점수 매핑
     for(int i = 0; i < name.size(); ++i)
