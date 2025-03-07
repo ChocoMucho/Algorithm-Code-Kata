@@ -5,12 +5,10 @@ public class Solution {
         int answer = 0;
         Array.Sort(A);
         Array.Sort(B);
-        Array.Reverse(B);
         
         for(int i = 0; i < A.Length; ++i)
         {
-            Console.WriteLine($"{A[i]}, {B[i]}");
-            answer += A[i] * B[i];
+            answer += A[i] * B[B.Length - 1 - i];
         }
         
         return answer;
