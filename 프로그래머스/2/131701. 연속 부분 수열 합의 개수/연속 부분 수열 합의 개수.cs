@@ -3,42 +3,58 @@ using System.Collections.Generic;
 
 public class Solution {
     public int solution(int[] elements) {
-        int length = elements.Length;
+        int answer = 0;
         HashSet<int> unique = new HashSet<int>();
-        int[] buckets = new int[length];
-        List<int> elementsToList = new List<int>(elements);
+        List<int> list = new List<int>();
+        int[] basket = new int[elements.Length];
+        
+        int length = elements.Length;
         
         for(int i = 0; i < length; ++i)
         {
-            for(int j = 0; j < length; ++j)
-            {
-                buckets[j] += elementsToList[j];
-                unique.Add(buckets[j]);
-            }
-            
-            int temp = elementsToList[0];
-            elementsToList.RemoveAt(0);
-            elementsToList.Add(temp);
+            list.Add(elements[i]);
         }
         
-        return unique.Count;
+        for(int i = 1; i <= length - 1; ++i)
+        {
+            for(int j = 0; j < length; ++j)
+            {
+                basket[j] += list[j];
+                unique.Add(basket[j]);
+            }
+            int temp = list[length - 1];
+            list.Insert(0, temp);
+        }
+        
+        answer = unique.Count;
+        ++answer;
+        
+        return answer;
     }
 }
 
 /*
-해시셋 변수 unique
-n길이의 int 배열 buckets
-앞 요소 뒤로 옮길 List elementsToList 
+@ 중복 제외하는 컬렉션 준비 -> 해시셋
+@ 길이 N만큼 요소들을 합쳐야 함. 배열 길이 넘으면 0부터 진행
+@ N은 배열의 길이를 넘어서지 않음
+@ elements의 길이와 같을 때에는 그냥 answer 증가 한번 -> 유일함
 
-for(elements.Length => i)
+해시셋 unique
+리스트 list = elements의 요소들
+배열 basket = elements의 길이 만큼 선언
+
+for(i, 1 부터 elements.Length - 1)
 {
-    for(elements.Length => j)
+    for(j, elements.Length)
     {
-        buckets 각 요소마다 elementsToList[j]더해주기
-        unique에 buckets[j] 추가하기
+        basket[j] += list[j]
+        unique.Add(basket[j])
     }
-    elementsToList 앞 요소 빼고 뒤로 붙이기
+    
+    temp = list 마지막 요소
+    list에서 마지막 요소 제거
+    list 맨 앞에 temp 삽입
 }
-
-answer에 unique개수 대입 and answer반환
+answer = 유니크 요소 개수
+++answer
 */
