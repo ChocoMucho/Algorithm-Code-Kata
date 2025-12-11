@@ -8,7 +8,7 @@ namespace BAEKJOON_Csharp
             int[] distances;
             int[] oilPrices;
             int minPrice = int.MaxValue;
-            int result = 0;
+            long result = 0;
 
             string input = Console.ReadLine();
             citieCount = int.Parse(input);
@@ -34,7 +34,7 @@ namespace BAEKJOON_Csharp
             {
                 if(minPrice > oilPrices[i])
                     minPrice = oilPrices[i]; // 더 작은 경우 최솟값 갱신
-                result += minPrice * distances[i];
+                result += (long)minPrice * (long)distances[i];
             }
 
             Console.WriteLine(result);
